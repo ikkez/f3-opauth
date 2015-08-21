@@ -1,0 +1,10 @@
+{
+    "name": "ikkez/f3-opauth",
+    "description": "Opauth Plugin for PHP Fat-Free Framework",
+    "keywords": ["F3","fatfree","authentication","opauth","oauth","auth"],
+    "homepage": "https://github.com/ikkez/f3-opauth",
+    "license": "GPL-3.0",
+    "autoload": {
+		"classmap": ["lib/opauth/"]
+    }
+}
