@@ -13,7 +13,7 @@ $f3->set('AUTOLOAD','lib/opauth/');
 
 ### Configuration
 
-1.  You need to configure each strategy you want to use on your service. You can find instructions how to do that in each [**strategy folder**](https://github.com/ikkez/f3-opauth/tree/master/lib/opauth/Strategy)'s readme file. If you need more OAuth providers, check the the [list of strategies](https://github.com/uzyn/opauth/wiki/List-of-strategies).
+1.  You need to **configure** each strategy you want to use on your service. You can find instructions how to do that in each [**strategy folder**](https://github.com/ikkez/f3-opauth/tree/master/lib/opauth/Strategy)'s readme file. Basically you only need to create some OAuth consumer apps on the strategy's provider and add the key/secret credentials to the config file. Google,Facebook,Twitter,and Github are already included here, so you can skip the _Install_ part in their readme files. If you need more OAuth providers, check the the [list of strategies](https://github.com/uzyn/opauth/wiki/List-of-strategies).
 2.  This plugin comes with its own [configuration file](https://github.com/ikkez/f3-opauth/blob/master/lib/opauth/opauth.ini).
 It's used to provide all strategy configuration to Opauth, as well as some F3 routing settings. You should at least change the *security_salt* and your favorite strategy keys and secrets.
 3.  Integrate the authorization into your existing login procedure.
