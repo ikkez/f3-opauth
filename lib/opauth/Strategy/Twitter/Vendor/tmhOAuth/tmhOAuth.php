@@ -29,60 +29,60 @@ class tmhOAuth {
 
     // default configuration options
     $this->config = array_merge(
-        array(
-          // leave 'user_agent' blank for default, otherwise set this to
-          // something that clearly identifies your app
-            'user_agent'                 => '',
-          // default timezone for requests
-            'timezone'                   => 'UTC',
+      array(
+        // leave 'user_agent' blank for default, otherwise set this to
+        // something that clearly identifies your app
+        'user_agent'                 => '',
+        // default timezone for requests
+        'timezone'                   => 'UTC',
 
-            'use_ssl'                    => true,
-            'host'                       => 'api.twitter.com',
+        'use_ssl'                    => true,
+        'host'                       => 'api.twitter.com',
 
-            'consumer_key'               => '',
-            'consumer_secret'            => '',
-            'user_token'                 => '',
-            'user_secret'                => '',
-            'force_nonce'                => false,
-            'nonce'                      => false, // used for checking signatures. leave as false for auto
-            'force_timestamp'            => false,
-            'timestamp'                  => false, // used for checking signatures. leave as false for auto
+        'consumer_key'               => '',
+        'consumer_secret'            => '',
+        'user_token'                 => '',
+        'user_secret'                => '',
+        'force_nonce'                => false,
+        'nonce'                      => false, // used for checking signatures. leave as false for auto
+        'force_timestamp'            => false,
+        'timestamp'                  => false, // used for checking signatures. leave as false for auto
 
-          // oauth signing variables that are not dynamic
-            'oauth_version'              => '1.0',
-            'oauth_signature_method'     => 'HMAC-SHA1',
+        // oauth signing variables that are not dynamic
+        'oauth_version'              => '1.0',
+        'oauth_signature_method'     => 'HMAC-SHA1',
 
-          // you probably don't want to change any of these curl values
-            'curl_connecttimeout'        => 30,
-            'curl_timeout'               => 10,
+        // you probably don't want to change any of these curl values
+        'curl_connecttimeout'        => 30,
+        'curl_timeout'               => 10,
 
-          // for security this should always be set to 2.
-            'curl_ssl_verifyhost'        => 2,
-          // for security this should always be set to true.
-            'curl_ssl_verifypeer'        => true,
+        // for security this should always be set to 2.
+        'curl_ssl_verifyhost'        => 2,
+        // for security this should always be set to true.
+        'curl_ssl_verifypeer'        => true,
 
-          // you can get the latest cacert.pem from here http://curl.haxx.se/ca/cacert.pem
-            'curl_cainfo'                => dirname(__FILE__) . '/cacert.pem',
-            'curl_capath'                => dirname(__FILE__),
+        // you can get the latest cacert.pem from here http://curl.haxx.se/ca/cacert.pem
+        'curl_cainfo'                => dirname(__FILE__) . '/cacert.pem',
+        'curl_capath'                => dirname(__FILE__),
 
-            'curl_followlocation'        => false, // whether to follow redirects or not
+        'curl_followlocation'        => false, // whether to follow redirects or not
 
-          // support for proxy servers
-            'curl_proxy'                 => false, // really you don't want to use this if you are using streaming
-            'curl_proxyuserpwd'          => false, // format username:password for proxy, if required
-            'curl_encoding'              => '',    // leave blank for all supported formats, else use gzip, deflate, identity
+        // support for proxy servers
+        'curl_proxy'                 => false, // really you don't want to use this if you are using streaming
+        'curl_proxyuserpwd'          => false, // format username:password for proxy, if required
+        'curl_encoding'              => '',    // leave blank for all supported formats, else use gzip, deflate, identity
 
-          // streaming API
-            'is_streaming'               => false,
-            'streaming_eol'              => "\r\n",
-            'streaming_metrics_interval' => 60,
+        // streaming API
+        'is_streaming'               => false,
+        'streaming_eol'              => "\r\n",
+        'streaming_metrics_interval' => 60,
 
-          // header or querystring. You should always use header!
-          // this is just to help me debug other developers implementations
-            'as_header'                  => true,
-            'debug'                      => false,
-        ),
-        $config
+        // header or querystring. You should always use header!
+        // this is just to help me debug other developers implementations
+        'as_header'                  => true,
+        'debug'                      => false,
+      ),
+      $config
     );
     $this->set_user_agent();
     date_default_timezone_set($this->config['timezone']);
@@ -144,9 +144,9 @@ class tmhOAuth {
       return array_map(array($this, 'safe_encode'), $data);
     } else if (is_scalar($data)) {
       return str_ireplace(
-          array('+', '%7E'),
-          array(' ', '~'),
-          rawurlencode($data)
+        array('+', '%7E'),
+        array(' ', '~'),
+        rawurlencode($data)
       );
     } else {
       return '';
@@ -177,11 +177,11 @@ class tmhOAuth {
    */
   private function get_defaults() {
     $defaults = array(
-        'oauth_version'          => $this->config['oauth_version'],
-        'oauth_nonce'            => $this->config['nonce'],
-        'oauth_timestamp'        => $this->config['timestamp'],
-        'oauth_consumer_key'     => $this->config['consumer_key'],
-        'oauth_signature_method' => $this->config['oauth_signature_method'],
+      'oauth_version'          => $this->config['oauth_version'],
+      'oauth_nonce'            => $this->config['nonce'],
+      'oauth_timestamp'        => $this->config['timestamp'],
+      'oauth_consumer_key'     => $this->config['consumer_key'],
+      'oauth_signature_method' => $this->config['oauth_signature_method'],
     );
 
     // include the user token if it exists
@@ -330,9 +330,9 @@ class tmhOAuth {
    */
   private function prepare_base_string() {
     $base = array(
-        $this->method,
-        $this->url,
-        $this->signing_params
+      $this->method,
+      $this->url,
+      $this->signing_params
     );
     $this->base_string = implode('&', $this->safe_encode($base));
   }
@@ -377,10 +377,10 @@ class tmhOAuth {
       $this->prepare_signing_key();
 
       $this->auth_params['oauth_signature'] = $this->safe_encode(
-          base64_encode(
-              hash_hmac(
-                  'sha1', $this->base_string, $this->signing_key, true
-              )));
+        base64_encode(
+          hash_hmac(
+            'sha1', $this->base_string, $this->signing_key, true
+      )));
 
       $this->prepare_auth_header();
     }
@@ -474,9 +474,9 @@ class tmhOAuth {
       $request = substr_replace($request, '', $pos);
 
     return implode('/', array(
-        $proto,
-        $this->config['host'],
-        $request . $format
+      $proto,
+      $this->config['host'],
+      $request . $format
     ));
   }
 
@@ -512,15 +512,15 @@ class tmhOAuth {
   }
 
   /**
-   * Utility function to parse the returned curl buffer and store them until
-   * an EOL is found. The buffer for curl is an undefined size so we need
-   * to collect the content until an EOL is found.
-   *
-   * This function calls the previously defined streaming callback method.
-   *
-   * @param object $ch curl handle
-   * @param string $data the current curl buffer
-   */
+    * Utility function to parse the returned curl buffer and store them until
+    * an EOL is found. The buffer for curl is an undefined size so we need
+    * to collect the content until an EOL is found.
+    *
+    * This function calls the previously defined streaming callback method.
+    *
+    * @param object $ch curl handle
+    * @param string $data the current curl buffer
+    */
   private function curlWrite($ch, $data) {
     $l = strlen($data);
     if (strpos($data, $this->config['streaming_eol']) === false) {
@@ -539,10 +539,10 @@ class tmhOAuth {
 
     $metrics = $this->update_metrics();
     $stop = call_user_func(
-        $this->config['streaming_callback'],
-        $content,
-        strlen($content),
-        $metrics
+      $this->config['streaming_callback'],
+      $content,
+      strlen($content),
+      $metrics
     );
     $this->buffer = $buffered[1];
     if ($stop)
@@ -586,21 +586,21 @@ class tmhOAuth {
     // configure curl
     $c = curl_init();
     curl_setopt_array($c, array(
-        CURLOPT_USERAGENT      => $this->config['user_agent'],
-        CURLOPT_CONNECTTIMEOUT => $this->config['curl_connecttimeout'],
-        CURLOPT_TIMEOUT        => $this->config['curl_timeout'],
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_SSL_VERIFYPEER => $this->config['curl_ssl_verifypeer'],
-        CURLOPT_SSL_VERIFYHOST => $this->config['curl_ssl_verifyhost'],
+      CURLOPT_USERAGENT      => $this->config['user_agent'],
+      CURLOPT_CONNECTTIMEOUT => $this->config['curl_connecttimeout'],
+      CURLOPT_TIMEOUT        => $this->config['curl_timeout'],
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_SSL_VERIFYPEER => $this->config['curl_ssl_verifypeer'],
+      CURLOPT_SSL_VERIFYHOST => $this->config['curl_ssl_verifyhost'],
 
-        CURLOPT_FOLLOWLOCATION => $this->config['curl_followlocation'],
-        CURLOPT_PROXY          => $this->config['curl_proxy'],
-        CURLOPT_ENCODING       => $this->config['curl_encoding'],
-        CURLOPT_URL            => $this->url,
+      CURLOPT_FOLLOWLOCATION => $this->config['curl_followlocation'],
+      CURLOPT_PROXY          => $this->config['curl_proxy'],
+      CURLOPT_ENCODING       => $this->config['curl_encoding'],
+      CURLOPT_URL            => $this->url,
       // process the headers
-        CURLOPT_HEADERFUNCTION => array($this, 'curlHeader'),
-        CURLOPT_HEADER         => false,
-        CURLINFO_HEADER_OUT    => true,
+      CURLOPT_HEADERFUNCTION => array($this, 'curlHeader'),
+      CURLOPT_HEADER         => false,
+      CURLINFO_HEADER_OUT    => true,
     ));
 
     if ($this->config['curl_cainfo'] !== false)

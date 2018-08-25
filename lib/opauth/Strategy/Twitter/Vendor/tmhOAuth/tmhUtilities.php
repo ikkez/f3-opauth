@@ -35,8 +35,8 @@ class tmhUtilities {
    */
   public static function entify_with_options($tweet, $options=array(), &$replacements=array()) {
     $default_opts = array(
-        'encoding' => 'UTF-8',
-        'target'   => '',
+      'encoding' => 'UTF-8',
+      'target'   => '',
     );
 
     $opts = array_merge($default_opts, $options);
@@ -80,9 +80,9 @@ class tmhUtilities {
             break;
         }
         $keys[$value['indices']['0']] = mb_substr(
-            $tweet['text'],
-            $value['indices']['0'],
-            $value['indices']['1'] - $value['indices']['0']
+          $tweet['text'],
+          $value['indices']['0'],
+          $value['indices']['1'] - $value['indices']['0']
         );
         $replacements[$value['indices']['0']] = $href;
       }
@@ -95,8 +95,8 @@ class tmhUtilities {
       $entified_tweet = mb_substr($entified_tweet, 0, $k).$v.mb_substr($entified_tweet, $k + strlen($keys[$k]));
     }
     $replacements = array(
-        'replacements' => $replacements,
-        'keys' => $keys
+      'replacements' => $replacements,
+      'keys' => $keys
     );
 
     mb_internal_encoding($encoding);
@@ -118,9 +118,9 @@ class tmhUtilities {
     }
 
     $url = sprintf('%s://%s%s',
-        $protocol,
-        $_SERVER['SERVER_NAME'],
-        $_SERVER['REQUEST_URI']
+      $protocol,
+      $_SERVER['SERVER_NAME'],
+      $_SERVER['REQUEST_URI']
     );
 
     $parts = parse_url($url);
@@ -199,7 +199,7 @@ class tmhUtilities {
     // some error that is a 401 but isn't because the OAuth token and signature are incorrect
     // TODO: this check is horrid but helps avoid requesting twice when the username and password are wrong
     if (stripos($tmhOAuth->response['response'], 'password') !== false)
-      return;
+     return;
 
     // force the timestamp to be the same as the Twitter servers, and re-request
     $tmhOAuth->auto_fixed_time = true;
@@ -249,8 +249,8 @@ class tmhUtilities {
             fwrite(STDOUT, "\x08 \x08");
             $password = substr($password, 0, -1);
           }
-          else
-            fwrite(STDOUT, "*");
+        else
+          fwrite(STDOUT, "*");
           $password .= $char;
         endif;
       endwhile;

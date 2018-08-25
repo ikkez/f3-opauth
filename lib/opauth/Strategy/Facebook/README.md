@@ -9,7 +9,11 @@ Getting started
 1. Install Opauth-Facebook:
    ```bash
    cd path_to_opauth/Strategy
-   git clone git://github.com/uzyn/opauth-facebook.git Facebook
+   git clone https://github.com/opauth/facebook.git Facebook
+   ```
+   or
+   ```
+   composer require opauth/facebook
    ```
 
 2. Create Facebook application at https://developers.facebook.com/apps/
@@ -33,13 +37,13 @@ Required parameters:
 )
 ```
 
-Even though `scope` is an optional configuration parameter for Opauth-Facebook, for most cases you would like to explicitly define it. It should be defined in a comma-separated string. 
+Even though `fields` is an optional configuration parameter for Opauth-Facebook, for most cases you would like to explicitly define it. It should be defined in a comma-separated string. 
 
-Refer to [Facebook Permissions Reference](https://developers.facebook.com/docs/authentication/permissions/) for list of valid permissions..
+Refer to [Facebook Fields Reference](https://developers.facebook.com/docs/graph-api/reference/user) for list of valid fields.
 
 License
 ---------
 Opauth-Facebook is MIT Licensed  
 Copyright © 2012 U-Zyn Chua (http://uzyn.com)
 
-[1]: https://github.com/uzyn/opauth
+[1]: https://github.com/opauth/opauth
