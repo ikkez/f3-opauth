@@ -3,7 +3,7 @@ This is a plugin for easy integration of [Opauth](http://opauth.org/) for PHP Fa
 
 ### Installation
 
-* A: use composer `composer require ikkez/f3-opauth:dev-master`
+* A: use composer `composer require ikkez/f3-opauth`
 * or B: put the opauth folder somewhere into your libs or autoloaded directory, and adjust the autoload path:
 
 ```php
