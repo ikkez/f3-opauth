@@ -11,7 +11,11 @@ Getting started
 1. Install Opauth-Google:
    ```bash
    cd path_to_opauth/Strategy
-   git clone git://github.com/uzyn/opauth-google.git Google
+   git clone git://github.com/opauth/google.git Google
+   ```
+   or
+   ```
+   composer require opauth/google
    ```
 
 2. Create a Google APIs project at https://code.google.com/apis/console/
@@ -54,4 +58,4 @@ License
 Opauth-Google is MIT Licensed  
 Copyright © 2012 U-Zyn Chua (http://uzyn.com)
 
-[1]: https://github.com/uzyn/opauth
+[1]: https://github.com/opauth/opauth
