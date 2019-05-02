@@ -27,7 +27,7 @@ class OpauthBridge extends \Prefab {
 		if (!isset($config['path']))
 			$config['path'] = $f3->BASE.'/'.$config['auth_route'].'/';
 		if (!isset($config['callback_url']))
-			$config['callback_url'] = $f3->SCHEME.'://'.$f3->HOST.$f3->BASE.'/'.
+			$config['callback_url'] = $f3->SCHEME.'://'.$f3->HOST.($f3->PORT?':'.$f3->PORT:'').$f3->BASE.'/'.
 				$config['callback_route'];
 		if (!isset($config['callback_transport']))
 			$config['callback_transport'] = 'post';
