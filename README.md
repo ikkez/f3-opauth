@@ -57,7 +57,7 @@ To login, call a strategy, i.e.`http://domain.com/auth/facebook`.
 
 ### Application flow
 
-1.  Alright, you place a social login button near your regular login form, that send the user to the login strategory, i.e. `http://domain.com/auth/facebook`.
+1.  Alright, you place a social login button near your regular login form, that send the user to the login strategy, i.e. `http://domain.com/auth/facebook`.
 2.  When a user authenticated to a provider, the user is send back to a callback-route. The callback checks if the request and auth was valid. Then, when the authorization was successful, the `onSuccess` handler is called and provides you some data from the given strategy.
 3.  You can use this data to extract a username, access-token, email or what ever suits best for that strategy. 
 Each strategy provides different data, so depending on your application needs, you perhaps should consider to add some fallback mechanisms into your application (i.e. it can happen that you wont get an email from twitter or facebook). 
