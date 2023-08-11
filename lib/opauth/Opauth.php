@@ -109,13 +109,13 @@ class Opauth {
 				unset($safeEnv['Strategy']);
 
 				$actualClass = $this->requireStrategy($class);
-				$this->Strategy = new $actualClass($strategy, $safeEnv);
+				$strategyClass = new $actualClass($strategy, $safeEnv);
 
 				if (empty($this->env['params']['action'])) {
 					$this->env['params']['action'] = 'request';
 				}
 
-				$this->Strategy->callAction($this->env['params']['action']);
+				$strategyClass->callAction($this->env['params']['action']);
 			} else {
 				trigger_error('Unsupported or undefined Opauth strategy - '.$this->env['params']['strategy'], E_USER_ERROR);
 			}
